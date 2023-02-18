@@ -4,10 +4,14 @@ const Todo = require('../models/todoModel')
 
 const router = express.Router()
 
-router.post('/api/todos', createTodo)
-router.get('/api/todos', getTodos)
-router.get('/api/todos/:id', getTodo)
-router.put('/api/todos/:id', updateTodo)
-router.delete('/api/todos/:id', deleteTodo)
+router.route('/')
+    .get(getTodos)
+    .post(createTodo)
+
+router.route('/:id')
+    .get(getTodo)
+    .patch(updateTodo)
+    .put(updateTodo)
+    .delete(deleteTodo)
 
 module.exports = router
