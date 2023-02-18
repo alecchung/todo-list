@@ -1,21 +1,19 @@
 const dotenv = require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const Todo = require('./models/todoModel')
+const taskRoutes = require('./routes/taskRoute')
 
 const app = express()
 
 // Middleware
 app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+app.use(taskRoutes)
 
 // Route
 app.get('/', (req, res) => {
     res.send('Hello Home!')
-})
-
-// Create a todo task
-app.post('/api/todos', async (req, res) => {
-    console.log(req.body);
-    res.send('Todo Task Created.')
 })
 
 // Port
