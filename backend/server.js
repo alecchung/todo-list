@@ -2,14 +2,14 @@ const dotenv = require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const Todo = require('./models/todoModel')
-const taskRoutes = require('./routes/taskRoute')
+const todoRoutes = require('./routes/todoRoute')
 
 const app = express()
 
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-app.use('/api/todos', taskRoutes)
+app.use('/api/todos', todoRoutes)
 
 // Route
 app.get('/', (req, res) => {

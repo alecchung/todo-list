@@ -2,7 +2,7 @@
 
 :root {
   --font-family: "Poppins", sans-serif;
-  --dark-blue: #0a1930;
+  --dark-blue: #1a55a8;
   --light-blue: #1f93ff;
 
   --color-white: #fff;
@@ -11,10 +11,10 @@
   --color-grey: #eee;
   --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
-  --color-purple: #9d0191;
+  --color-purple: #5118c4;
   --color-orange: #ff7722;
 
-  --color-primary: #007bff;
+  --color-primary: #F2F4F7;
   --color-success: #28a745;
   --color-danger: orangered;
 }
@@ -433,7 +433,7 @@ a:hover {
   font-size: 1.5rem;
 }
 
-/* TASK APP CSS */
+/* TODO APP CSS */
 .app {
   width: 100%;
   min-height: 100vh;
@@ -444,7 +444,7 @@ a:hover {
   padding: 0 10px;
 }
 
-.task-container {
+.todo-container {
   width: 100%;
   max-width: 500px;
   height: auto;
@@ -457,35 +457,34 @@ a:hover {
   padding: 3rem 2rem;
 }
 
-.task-form {
+.todo-form {
   width: 100%;
   margin: 2rem 0;
   display: flex;
 }
-.task-form input {
+.todo-form input {
   width: 85%;
   height: 4rem;
   font-size: 1.6rem;
   padding: 0 5px;
-  outline: none;
-  /* margin-right: 5px; */
+  border-radius: 5px 0 0 5px ;
 }
-.task-form button {
+.todo-form button {
   width: 15%;
   height: 4rem;
   font-size: 1.8rem;
   cursor: pointer;
-  background-color: var(--color-purple);
+  background-color: var(--light-blue);
   color: #fff;
   border: none;
   transition: all 0.3s;
 }
 
-.task-form button:hover {
-  background-color: var(--color-primary);
+.todo-form button:hover {
+  background-color: var(--dark-blue);
 }
 
-.task {
+.todo {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -509,7 +508,7 @@ a:hover {
   }
 }
 
-.task::after {
+.todo::after {
   content: "";
   position: absolute;
   top: 0;
@@ -533,11 +532,11 @@ a:hover {
   background-color: var(--color-success);
 }
 
-.task-icons {
+.todo-icons {
   font-size: 1.6rem;
 }
 
-.task-icons > * {
+.todo-icons > * {
   margin-left: 7px;
   cursor: pointer;
 }

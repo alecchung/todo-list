@@ -26,7 +26,7 @@ const getTodo = async (req, res) => {
         const { id } = req.params
         const todo = await Todo.findById(id)
         if (!todo) {
-            return res.status(404).json(`No todo task with id: ${id}.`)
+            return res.status(404).json(`No todo with id: ${id}.`)
         }
         res.status(200).json(todo)
     } catch (error) {
@@ -42,7 +42,7 @@ const updateTodo = async (req, res) => {
             { _id: id }, req.body, { new: true, runValidators: true, }
         )
         if (!todo) {
-            return res.status(404).json(`No todo task with id: ${id}.`)
+            return res.status(404).json(`No todo with id: ${id}.`)
         }
         res.status(200).json(todo)
     } catch (error) {
@@ -56,9 +56,9 @@ const deleteTodo = async (req, res) => {
         const { id } = req.params
         const todo = await Todo.findByIdAndDelete(id)
         if (!todo) {
-            return res.status(404).json(`No todo task with id: ${id}.`)
+            return res.status(404).json(`No todo with id: ${id}.`)
         }
-        res.status(200).send('Todo task deleted.')
+        res.status(200).send('Todo deleted.')
     } catch (error) {
 
     }

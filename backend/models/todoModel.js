@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const todoSchema = mongoose.Schema({
-    task: {
+    todo: {
         type: String,
-        required: [true, "Please add a todo task: "],
+        required: [true, "Please add a todo: "],
     },
     completed: {
         type: Boolean,
