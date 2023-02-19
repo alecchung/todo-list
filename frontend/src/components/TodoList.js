@@ -28,6 +28,7 @@ const TodoList = () => {
       setFormData({ ...formData, name: "" })
     } catch (error) {
       toast.error(error.message)
+      console.log(error);
     }
   }
 
