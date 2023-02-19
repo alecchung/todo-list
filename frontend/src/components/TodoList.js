@@ -6,29 +6,29 @@ import TodoForm from './TodoForm'
 
 const TodoList = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    todo: '',
     completed: false
   })
-  const { name } = formData
+  const { todo } = formData
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
+    console.log(e);
     setFormData({ ...formData, [name]: value })
   }
 
   const createTodo = async (e) => {
     e.preventDefault()
-    if (name === "") {
-      return toast.error('No todo provided',
-        { position: 'top-center', transition: Flip })
+    if (todo === "") {
+      return toast.error('No todo provided', { position: 'top-center', transition: Flip })
     }
     try {
+      console.log(formData);
       await axios.post('http://localhost:5000/api/todos', formData)
-      toast.success("Todo added.")
-      setFormData({ ...formData, name: "" })
+      toast.success("Todo added.", { position: 'top-center', transition: Flip })
+      setFormData({ ...formData, todo: "" })
     } catch (error) {
-      toast.error(error.message)
-      console.log(error);
+      toast.error(error.response.data, { position: 'top-center', transition: Flip })
     }
   }
 
@@ -36,7 +36,7 @@ const TodoList = () => {
     <div>
       <h2>To-Do List</h2>
       <TodoForm
-        name={name}
+        todo={todo}
         handleInputChange={handleInputChange}
         createTodo={createTodo}
       />
