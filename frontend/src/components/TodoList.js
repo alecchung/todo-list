@@ -4,7 +4,7 @@ import { toast, Flip } from 'react-toastify'
 import { URL } from '../App'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
-import loader from '../assets/loading.gif'
+import loading from '../assets/loading.gif'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
@@ -19,7 +19,6 @@ const TodoList = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    console.log(e);
     setFormData({ ...formData, [name]: value })
   }
 
@@ -27,7 +26,6 @@ const TodoList = () => {
     setIsLoading(true)
     try {
       const { data } = await axios.get(`${URL}/api/todos`)
-      // console.log(data);
       setTodos(data)
       setIsLoading(false)
     } catch (error) {
@@ -40,7 +38,7 @@ const TodoList = () => {
     getTodos()
   }, [])
 
-
+  // create a todo
   const createTodo = async (e) => {
     e.preventDefault()
     if (todo === "") {
@@ -51,8 +49,19 @@ const TodoList = () => {
       await axios.post(`${URL}/api/todos`, formData)
       toast.success("Todo added.", { position: 'top-center', transition: Flip })
       setFormData({ ...formData, todo: "" })
+      getTodos()
     } catch (error) {
       toast.error(error.response.data, { position: 'top-center', transition: Flip })
+    }
+  }
+
+  // delete todo
+  const deleteTodo = async (id) => {
+    try {
+      await axios.delete(`${URL}/api/todos/${id}`)
+      getTodos()
+    } catch (error) {
+      toast.error(error.message)
     }
   }
 
@@ -75,7 +84,7 @@ const TodoList = () => {
       {
         isLoading && (
           <div className='--flex-center'>
-            <img src={loader} alt='loading' width={200}></img>
+            <img src={loading} alt='loading' width={200}></img>
           </div>
         )
       }
@@ -85,11 +94,15 @@ const TodoList = () => {
           : (<>
             {todos.map((todo, index) => {
               return (
-                <Todo />
+                <Todo
+                  key={todo._id}
+                  todo={todo}
+                  deleteTodo={deleteTodo}
+                  index={index}
+                />
               )
             })}</>)
       }
-      <Todo />
     </div>
   )
 }
