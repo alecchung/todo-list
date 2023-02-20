@@ -8,7 +8,7 @@ import loading from '../assets/loading.gif'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
-  const [completedTodo, setCompletedTodo] = useState([])
+  const [completedTodos, setCompletedTodos] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [todoID, setTodoID] = useState('')
@@ -32,7 +32,7 @@ const TodoList = () => {
       setTodos(data)
       setIsLoading(false)
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message,{ position: 'top-center', transition: Flip })
       setIsLoading(false)
     }
   }
@@ -56,7 +56,7 @@ const TodoList = () => {
     }
     try {
       await axios.put(`${URL}/api/todos/${todoID}`, formData)
-      setFormData({...formData, todo: ''})
+      setFormData({ ...formData, todo: '' })
       setIsEditing(false)
       getTodos()
     } catch (error) {
@@ -71,13 +71,27 @@ const TodoList = () => {
       return toast.error('No todo provided', { position: 'top-center', transition: Flip })
     }
     try {
-      console.log(formData);
+      // console.log(formData);
       await axios.post(`${URL}/api/todos`, formData)
       toast.success("Todo added.", { position: 'top-center', transition: Flip })
       setFormData({ ...formData, todo: "" })
       getTodos()
     } catch (error) {
-      toast.error(error.response.data, { position: 'top-center', transition: Flip })
+      toast.error(error.message, { position: 'top-center', transition: Flip })
+    }
+  }
+
+  // set a todo to 'completed'
+  const setToCompleted = async (todo) => {
+    const newFormData = {
+      todo: todo.todo,
+      completed: true,
+    }
+    try {
+      await axios.put(`${URL}/api/todos/${todo._id}`, newFormData)
+      getTodos()
+    } catch (error) {
+      toast.error(error.message, { position: 'top-center', transition: Flip })
     }
   }
 
@@ -87,9 +101,17 @@ const TodoList = () => {
       await axios.delete(`${URL}/api/todos/${id}`)
       getTodos()
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message,{ position: 'top-center', transition: Flip })
     }
   }
+
+  useEffect(() => {
+    const completedTodo = todos.filter((todo) => {
+      return todo.completed === true
+    })
+    setCompletedTodos(completedTodo)
+  }, [todos])
+
 
   return (
     <div>
@@ -101,14 +123,16 @@ const TodoList = () => {
         isEditing={isEditing}
         updateTodo={updateTodo}
       />
-      <div className='--flex-between --pb'>
-        <p>
-          <b>Total: </b>
-        </p>
-        <p>
-          <b>Completed: </b>
-        </p>
-      </div>
+      {todos.length > 0 &&
+        <div className='--flex-between --pb'>
+          <p>
+            <b>Total: &nbsp; </b>{todos.length}
+          </p>
+          <p>
+            <b>Completed: &nbsp;</b>{completedTodos.length}&emsp;
+          </p>
+        </div>
+      }
       {
         isLoading && (
           <div className='--flex-center'>
@@ -118,7 +142,7 @@ const TodoList = () => {
       }
       {
         !isLoading && todos.length === 0
-          ? (<p className='--py'>You don't have any todos. Maybe add one first.</p>)
+          ? (<p className='--py --lh2 --center-all'>You don't have any todos yet.<br /><br />Care to add one first?</p>)
           : (<>
             {todos.map((todo, index) => {
               return (
@@ -128,6 +152,7 @@ const TodoList = () => {
                   getTodo={getTodo}
                   deleteTodo={deleteTodo}
                   index={index}
+                  setToCompleted={setToCompleted}
                 />
               )
             })}</>)
