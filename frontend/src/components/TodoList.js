@@ -8,7 +8,7 @@ import loader from '../assets/loading.gif'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
-  const [completedTodo, setcompletedTodo] = useState([])
+  const [completedTodo, setCompletedTodo] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({
