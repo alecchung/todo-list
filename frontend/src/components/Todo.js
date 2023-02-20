@@ -1,7 +1,7 @@
 import React from 'react'
 import { MdOutlineDownloadDone, MdDelete, MdEdit } from 'react-icons/md'
 
-const Todo = ({ key, todo, index, deleteTodo }) => {
+const Todo = ({ key, todo, index, getTodo, deleteTodo }) => {
   return (
     <div className='todo'>
       <p>
@@ -9,7 +9,7 @@ const Todo = ({ key, todo, index, deleteTodo }) => {
       </p>
       <div className='todo-icons'>
         <MdOutlineDownloadDone color='green' />
-        <MdEdit color='blue' />
+        <MdEdit color='blue' onClick={()=>getTodo(todo)} />
         <MdDelete color='red' onClick={() => deleteTodo(todo._id)}/>
       </div>
     </div>

@@ -1,8 +1,10 @@
 import React from 'react'
 
-const TodoForm = ({ createTodo, todo, handleInputChange }) => {
+const TodoForm = ({ todo, createTodo, handleInputChange,
+  isEditing, updateTodo }) => {
   return (
-    <form className="todo-form" onSubmit={createTodo}>
+    <form className="todo-form"
+      onSubmit={isEditing ? updateTodo : createTodo}>
       <input
         type='text'
         placeholder='Add a Todo'
@@ -10,7 +12,7 @@ const TodoForm = ({ createTodo, todo, handleInputChange }) => {
         value={todo}
         onChange={handleInputChange}
       />
-      <button type='submit'>Add</button>
+      <button type='submit'>{isEditing ? 'Edit' : 'Add'}</button>
     </form>
   )
 }
