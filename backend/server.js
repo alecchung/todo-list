@@ -9,7 +9,9 @@ const cors = require('cors')
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+app.use(cors({
+    origin: ['http://localhost:3000','https://todo.onrender.com']
+}))
 app.use('/api/todos', todoRoutes)
 
 // Route
