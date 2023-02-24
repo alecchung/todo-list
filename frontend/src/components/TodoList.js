@@ -4,7 +4,7 @@ import { toast, Flip } from 'react-toastify'
 import { URL } from '../App'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
-import loading from '../assets/loading.gif'
+import loading from '../assets/oval.svg'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
@@ -32,7 +32,7 @@ const TodoList = () => {
       setTodos(data)
       setIsLoading(false)
     } catch (error) {
-      toast.error(error.message,{ position: 'top-center', transition: Flip })
+      toast.error(error.message, { position: 'top-center', transition: Flip })
       setIsLoading(false)
     }
   }
@@ -101,7 +101,7 @@ const TodoList = () => {
       await axios.delete(`${URL}/api/todos/${id}`)
       getTodos()
     } catch (error) {
-      toast.error(error.message,{ position: 'top-center', transition: Flip })
+      toast.error(error.message, { position: 'top-center', transition: Flip })
     }
   }
 
@@ -136,13 +136,21 @@ const TodoList = () => {
       {
         isLoading && (
           <div className='--flex-center'>
-            <img src={loading} alt='loading' width={200}></img>
+            <img
+              style={{ filter: "invert(60%)" }}
+              src={loading}
+              alt='loading'
+              width={90}
+            />
           </div>
         )
       }
       {
         !isLoading && todos.length === 0
-          ? (<p className='--py --lh2 --center-all'>You don't have any todos yet.<br /><br />Care to add one first?</p>)
+          ? (<p
+            className='--py --lh2 --center-all'>
+            You don't have any todos yet.<br /><br />Care to add one first?
+          </p>)
           : (<>
             {todos.map((todo, index) => {
               return (
