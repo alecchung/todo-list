@@ -140,7 +140,7 @@ const TodoList = () => {
               style={{ filter: "invert(60%)" }}
               src={loading}
               alt='loading'
-              width={90}
+              width={80}
             />
           </div>
         )
