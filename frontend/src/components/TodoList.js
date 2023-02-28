@@ -142,6 +142,8 @@ const TodoList = () => {
               alt='loading'
               width={80}
             />
+            <span/>
+            <p>Loading...</p>
           </div>
         )
       }
