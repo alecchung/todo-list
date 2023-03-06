@@ -143,7 +143,7 @@ const TodoList = () => {
               width={80}
             />
             <span/>
-            <p>Loading ...</p>
+            <p>Loading...</p>
           </div>
         )
       }
