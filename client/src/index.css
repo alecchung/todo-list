@@ -473,13 +473,21 @@ a:hover {
   margin: 2rem 0;
   display: flex;
 }
+
 .todo-form input {
   width: 85%;
   height: 4rem;
   font-size: 1.6rem;
-  padding: 0 5px;
+  padding: 0 10px;
   border-radius: 5px 0 0 5px ;
 }
+
+.todo-form input:focus {
+  outline: none;
+  border: var(--light-blue) 2px solid;
+  box-shadow: 0 0 -1px -1px var(--light-blue);
+}
+
 .todo-form button {
   width: 15%;
   height: 4rem;
