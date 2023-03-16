@@ -444,14 +444,14 @@ a:hover {
   font-size: 1.5rem;
 }
 
-/* TODO APP CSS */
+/* Todo App CSS */
 .app {
   width: 100%;
   min-height: 100vh;
   background-color: var(--color-primary);
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   padding: 0 10px;
 }
 
@@ -479,13 +479,14 @@ a:hover {
   height: 4rem;
   font-size: 1.6rem;
   padding: 0 10px;
+  border-right: 0;
   border-radius: 5px 0 0 5px ;
 }
 
 .todo-form input:focus {
   outline: none;
   border: var(--light-blue) 2px solid;
-  box-shadow: 0 0 -1px -1px var(--light-blue);
+  box-shadow: 0 0 1px 0 var(--light-blue);
 }
 
 .todo-form button {
