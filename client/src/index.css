@@ -412,13 +412,6 @@ p {
   width: 5rem;
   height: 3px;
   margin-bottom: 1rem;
-
-  background: rgb(217, 8, 170);
-  background: linear-gradient(
-    135deg,
-    rgba(163, 1, 191, 1) 44%,
-    rgba(217, 8, 170, 1) 57%
-  );
 }
 
 .--list-style-none {
@@ -485,7 +478,7 @@ a:hover {
 
 .todo-form input:focus {
   outline: none;
-  border: var(--light-blue) 2px solid;
+  border: var(--light-blue) 1px solid;
   box-shadow: 0 0 1px 0 var(--light-blue);
 }
 
