@@ -118,7 +118,7 @@ const TodoList = () => {
 
   return (
     <div>
-      <h2>To-Do List</h2>
+      <h2>Todo List</h2>
       <TodoForm
         todo={todo}
         handleInputChange={handleInputChange}
