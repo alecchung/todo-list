@@ -10,14 +10,17 @@ const Todo = ({ todo, index, getTodo,
         <b>&nbsp; {index + 1}. &nbsp; </b>{todo.todo}
       </p>
       <div className='todo-icons'>
+
+        {/* DONE/MARK AS DON icon */}
         <MdDone
           data-tooltip-id="my-tooltip"
-          data-tooltip-content="Mark as Done"
+          data-tooltip-content={todo.completed ? 'Already done' : 'Mark as Done'}
           onClick={todo.completed ? null : () => setToCompleted(todo)}
           color={todo.completed ? 'lightgray' : 'green'}
         />
         <Tooltip id="my-tooltip" />
 
+        {/* EDIT icon */}
         <MdEdit
           data-tooltip-id="my-tooltip"
           data-tooltip-content="Edit"
@@ -25,6 +28,7 @@ const Todo = ({ todo, index, getTodo,
           onClick={() => getTodo(todo)} />
         <Tooltip id="my-tooltip" />
 
+        {/* DELETE icon */}
         <MdDelete
           data-tooltip-id="my-tooltip"
           data-tooltip-content="Delete"

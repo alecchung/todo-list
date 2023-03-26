@@ -132,7 +132,7 @@ const TodoList = () => {
             <b>Total: &nbsp; </b>{todos.length}
           </p>
           <p>
-            <b>Completed: &nbsp;</b>{completedTodos.length}&emsp;
+            <b>Done: &nbsp;</b>{completedTodos.length}&emsp;
           </p>
         </div>
       }
