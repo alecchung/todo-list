@@ -1,6 +1,8 @@
-import { MdOutlineDone, MdDelete, MdEdit } from 'react-icons/md'
+import { MdDone, MdDelete, MdEdit } from 'react-icons/md'
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
-const Todo = ({ key, todo, index, getTodo,
+const Todo = ({ todo, index, getTodo,
   setToCompleted, deleteTodo }) => {
   return (
     <div className={todo.completed ? 'todo completed' : 'todo'}>
@@ -8,13 +10,28 @@ const Todo = ({ key, todo, index, getTodo,
         <b>&nbsp; {index + 1}. &nbsp; </b>{todo.todo}
       </p>
       <div className='todo-icons'>
-        <MdOutlineDone
-          sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+        <MdDone
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Mark as Done"
           onClick={todo.completed ? null : () => setToCompleted(todo)}
           color={todo.completed ? 'lightgray' : 'green'}
         />
-        <MdEdit color='blue' onClick={() => getTodo(todo)} />
-        <MdDelete color='red' onClick={() => deleteTodo(todo._id)} />
+        <Tooltip id="my-tooltip" />
+
+        <MdEdit
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Edit"
+          color='blue'
+          onClick={() => getTodo(todo)} />
+        <Tooltip id="my-tooltip" />
+
+        <MdDelete
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Delete"
+          color='red'
+          onClick={() => deleteTodo(todo._id)} />
+        <Tooltip id="my-tooltip" />
+
       </div>
     </div>
   )
