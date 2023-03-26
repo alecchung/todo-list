@@ -529,7 +529,7 @@ a:hover {
 .todo-form input:focus ~ span {
   font-size: 1.2rem;
   background: #fff;
-  transform: translateY(-2rem);
+  transform: translateY(-1.8rem);
 }
 
 .todo-form button {
