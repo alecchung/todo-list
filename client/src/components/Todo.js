@@ -11,7 +11,7 @@ const Todo = ({ todo, index, getTodo,
       </p>
       <div className='todo-icons'>
 
-        {/* DONE/MARK AS DON icon */}
+        {/* 'DONE' / 'MARK AS DONE' icon */}
         <MdDone
           data-tooltip-id="my-tooltip"
           data-tooltip-content={todo.completed ? 'Already done' : 'Mark as Done'}
