@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   --font-family: "Poppins", sans-serif;
@@ -9,6 +9,7 @@
   --color-dark: #333;
 
   --color-grey: #eee;
+  ---dark-grey: #aaa;
   --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
   --color-purple: #5118c4;
@@ -54,16 +55,19 @@ section {
   justify-content: center;
   align-items: center;
 }
+
 .--flex-start {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
+
 .--flex-end {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
+
 .--flex-between {
   display: flex;
   justify-content: space-between;
@@ -98,6 +102,7 @@ section {
   row-gap: 1rem;
   column-gap: 1rem;
 }
+
 .--grid-25 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
@@ -126,15 +131,19 @@ h4 {
   color: var(--color-dark);
   margin-bottom: 1rem;
 }
+
 h1 {
   font-size: 4rem;
 }
+
 h2 {
   font-size: 3rem;
 }
+
 h3 {
   font-size: 2.5rem;
 }
+
 h4 {
   font-size: 2rem;
 }
@@ -153,6 +162,7 @@ p {
 .--text-xl {
   font-size: 4.5rem;
 }
+
 .--text-lg {
   font-size: 4rem;
 }
@@ -176,6 +186,7 @@ p {
 .--fw-bold {
   font-weight: 600;
 }
+
 .--fw-thin {
   font-weight: 200;
 }
@@ -188,9 +199,11 @@ p {
 .--color-primary {
   color: #007bff;
 }
+
 .--color-danger {
   color: orangered;
 }
+
 .--color-success {
   color: #28a745;
 }
@@ -216,9 +229,11 @@ p {
 .--m {
   margin: 1rem;
 }
+
 .--ml {
   margin-left: 1rem;
 }
+
 .--mr {
   margin-right: 1rem;
 }
@@ -230,6 +245,7 @@ p {
 .--my {
   margin: 1rem 0;
 }
+
 .--mx {
   margin: 0 1rem;
 }
@@ -266,18 +282,23 @@ p {
 .--p {
   padding: 1rem;
 }
+
 .--p2 {
   padding: 2rem;
 }
+
 .--py {
   padding: 1rem 0;
 }
+
 .--py2 {
   padding: 2rem 0;
 }
+
 .--px {
   padding: 0 1rem;
 }
+
 .--px2 {
   padding: 0 2rem;
 }
@@ -312,11 +333,13 @@ p {
   color: #fff;
   background: #007bff;
 }
+
 .--btn-secondary {
   color: #fff;
   border: 1px solid #fff;
   background: transparent;
 }
+
 .--btn-danger {
   color: #fff;
   background: orangered;
@@ -331,15 +354,19 @@ p {
 .--bg-light {
   background: #fff;
 }
+
 .--bg-dark {
   background: var(--color-dark);
 }
+
 .--bg-primary {
   background: var(--color-primary);
 }
+
 .--bg-success {
   background: var(--color-success);
 }
+
 .--bg-grey {
   background: var(--color-grey);
 }
@@ -349,18 +376,19 @@ p {
   font-weight: 300;
 }
 
-.--form-control > * {
+.--form-control>* {
   margin: 5px 0;
 }
 
 .--form-control input {
   font-size: 1.6rem;
-  font-weight: 300;
+  font-weight: 900;
   padding: 8px 1rem;
   border: 1px solid #777;
   border-radius: 3px;
   outline: none;
 }
+
 .--form-control select {
   font-size: 1.4rem;
   font-weight: 400;
@@ -387,6 +415,7 @@ p {
 .--block {
   display: block;
 }
+
 .--inline-block {
   display: inline-block;
 }
@@ -403,6 +432,7 @@ p {
 .--line {
   position: relative;
 }
+
 .--line::after {
   content: "";
   position: absolute;
@@ -441,7 +471,7 @@ a:hover {
 .app {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--color-primary);
+  background: var(--color-primary);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -457,7 +487,7 @@ a:hover {
   border-radius: 5px;
   box-shadow: var(--box-shadow);
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: 150px;
   padding: 3rem 2rem;
 }
 
@@ -465,21 +495,41 @@ a:hover {
   width: 100%;
   margin: 2rem 0;
   display: flex;
+  position: relative;
 }
 
 .todo-form input {
+  position: relative;
   width: 85%;
   height: 4rem;
   font-size: 1.6rem;
   padding: 0 10px;
+  border: #dad8d8 solid 1px;
   border-right: 0;
-  border-radius: 5px 0 0 5px ;
+  border-radius: 5px 0 0 5px;
 }
 
 .todo-form input:focus {
   outline: none;
   border: var(--light-blue) 1px solid;
-  box-shadow: 0 0 1px 0 var(--light-blue);
+  box-shadow: 0 0 0.5px 0 var(--light-blue);
+}
+
+.todo-form span {
+  position: absolute;
+  left: 1.2rem;
+  top: 1rem;
+  font-size: 1.4rem;
+  color: var(---dark-grey);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.todo-form input:valid ~ span,
+.todo-form input:focus ~ span {
+  font-size: 1.2rem;
+  background: #fff;
+  transform: translateY(-2rem);
 }
 
 .todo-form button {
@@ -487,14 +537,14 @@ a:hover {
   height: 4rem;
   font-size: 1.8rem;
   cursor: pointer;
-  background-color: var(--light-blue);
+  background: var(--light-blue);
   color: #fff;
   border: none;
   transition: all 0.3s;
 }
 
 .todo-form button:hover {
-  background-color: var(--dark-blue);
+  background: var(--dark-blue);
 }
 
 .todo {
@@ -503,7 +553,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: #eee;
+  background: #eee;
   padding: 10px;
   margin: 7px 0;
   animation: slide-in ease 0.5s;
@@ -513,9 +563,11 @@ a:hover {
   0% {
     transform: translateX(40px);
   }
+
   50% {
     transform: translateX(-20px);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -528,7 +580,7 @@ a:hover {
   left: 0;
   height: 100%;
   width: 5px;
-  background-color: var(--color-danger);
+  background: var(--color-danger);
 }
 
 .completed {
@@ -542,14 +594,14 @@ a:hover {
   left: 0;
   height: 100%;
   width: 5px;
-  background-color: var(--color-success);
+  background: var(--color-success);
 }
 
 .todo-icons {
   font-size: 1.6rem;
 }
 
-.todo-icons > * {
+.todo-icons>* {
   margin-left: 7px;
   cursor: pointer;
 }

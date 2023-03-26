@@ -7,11 +7,12 @@ const TodoForm = ({ todo, createTodo, handleInputChange,
       onSubmit={isEditing ? updateTodo : createTodo}>
       <input
         type='text'
-        placeholder='Add a Todo'
+        required
         name='todo'
         value={todo}
         onChange={handleInputChange}
       />
+      <span>{isEditing ? '' : 'Add a Todo'}</span>
       <button type='submit'>{isEditing ? 'Edit' : 'Add'}</button>
     </form>
   )
