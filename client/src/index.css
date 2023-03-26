@@ -488,7 +488,7 @@ a:hover {
   box-shadow: var(--box-shadow);
   overflow: hidden;
   margin-top: 150px;
-  padding: 3rem 2rem;
+  padding: 3rem;
 }
 
 .todo-form {
