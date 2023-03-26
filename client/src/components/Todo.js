@@ -1,5 +1,4 @@
-import React from 'react'
-import { MdOutlineDownloadDone, MdDelete, MdEdit } from 'react-icons/md'
+import { MdOutlineDone, MdDelete, MdEdit } from 'react-icons/md'
 
 const Todo = ({ key, todo, index, getTodo,
   setToCompleted, deleteTodo }) => {
@@ -9,7 +8,11 @@ const Todo = ({ key, todo, index, getTodo,
         <b>&nbsp; {index + 1}. &nbsp; </b>{todo.todo}
       </p>
       <div className='todo-icons'>
-        <MdOutlineDownloadDone onClick={todo.completed ? null : () => setToCompleted(todo)} color={todo.completed ? 'lightgray' : 'green'} />
+        <MdOutlineDone
+          sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+          onClick={todo.completed ? null : () => setToCompleted(todo)}
+          color={todo.completed ? 'lightgray' : 'green'}
+        />
         <MdEdit color='blue' onClick={() => getTodo(todo)} />
         <MdDelete color='red' onClick={() => deleteTodo(todo._id)} />
       </div>

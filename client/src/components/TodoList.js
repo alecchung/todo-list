@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { toast, Flip } from 'react-toastify'
 import { URL } from '../App'

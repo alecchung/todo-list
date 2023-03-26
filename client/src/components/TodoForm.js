@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TodoForm = ({ todo, createTodo, handleInputChange,
   isEditing, updateTodo }) => {
   return (
