@@ -58,6 +58,7 @@ const TodoList = () => {
       await axios.put(`${URL}/api/todos/${todoID}`, formData)
       setFormData({ ...formData, todo: '' })
       setIsEditing(false)
+      toast.success("Todo updated.", { position: 'top-center', transition: Flip })
       getTodos()
     } catch (error) {
       toast.error(error.response.data, { position: 'top-center', transition: Flip })
@@ -89,6 +90,7 @@ const TodoList = () => {
     }
     try {
       await axios.put(`${URL}/api/todos/${todo._id}`, newFormData)
+      toast.success("Todo completed.", { position: 'top-center', transition: Flip })
       getTodos()
     } catch (error) {
       toast.error(error.message, { position: 'top-center', transition: Flip })
@@ -99,6 +101,7 @@ const TodoList = () => {
   const deleteTodo = async (id) => {
     try {
       await axios.delete(`${URL}/api/todos/${id}`)
+      toast.success("Todo deleted.", { position: 'top-center', transition: Flip })
       getTodos()
     } catch (error) {
       toast.error(error.message, { position: 'top-center', transition: Flip })
