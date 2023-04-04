@@ -3,7 +3,7 @@ import { toast, Flip } from 'react-toastify'
 import axios from 'axios'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
-import loading from '../assets/oval.svg'
+import { ThreeDots } from 'react-loading-icons'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
@@ -137,15 +137,19 @@ const TodoList = () => {
       }
       {
         isLoading && (
-          <div className='--flex-center'>
-            <img
-              style={{ filter: "invert(60%)" }}
-              src={loading}
-              alt='loading'
-              width={60}
+          <div className='--flex-center --my5'>
+            <ThreeDots
+              fill='var(--light-blue)'
+              fillOpacity={1}
+              height="2em"
+              speed={1}
+              stroke="transparent"
+              strokeOpacity={1}
+              style={{
+                margin: '2em'
+              }}
             />
-            <span />
-            <p>Loading...</p>
+            <p><strong>Loading...</strong></p>
           </div>
 
         )
