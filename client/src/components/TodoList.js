@@ -16,6 +16,8 @@ const TodoList = () => {
     todo: '',
     completed: false
   })
+
+  const URL = process.env.REACT_APP_SERVER_URL
   const { todo } = formData
 
   const handleInputChange = (e) => {
@@ -27,7 +29,7 @@ const TodoList = () => {
   const getTodos = async () => {
     setIsLoading(true)
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/todos`)
+      const { data } = await axios.get(`${URL}/api/todos`)
       setTodos(data)
       setIsLoading(false)
     } catch (error) {
@@ -137,7 +139,7 @@ const TodoList = () => {
       }
       {
         isLoading && (
-          <div className='--flex-center --my5'>
+          <div className='--flex-center --my'>
             <ThreeDots
               fill='var(--light-blue)'
               fillOpacity={1}
