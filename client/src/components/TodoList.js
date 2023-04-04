@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { toast, Flip } from 'react-toastify'
-// import { URL } from '../App'
+import axios from 'axios'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
 import loading from '../assets/oval.svg'
@@ -143,7 +142,7 @@ const TodoList = () => {
               style={{ filter: "invert(60%)" }}
               src={loading}
               alt='loading'
-              width={80}
+              width={60}
             />
             <span />
             <p>Loading...</p>
