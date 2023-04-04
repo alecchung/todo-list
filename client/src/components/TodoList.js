@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { toast, Flip } from 'react-toastify'
-import { URL } from '../App'
+// import { URL } from '../App'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
 import loading from '../assets/oval.svg'
@@ -28,7 +28,7 @@ const TodoList = () => {
   const getTodos = async () => {
     setIsLoading(true)
     try {
-      const { data } = await axios.get(`${URL}/api/todos`)
+      const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/todos`)
       setTodos(data)
       setIsLoading(false)
     } catch (error) {
