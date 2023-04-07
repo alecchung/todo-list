@@ -4,11 +4,13 @@ import axios from 'axios'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
 import { ThreeDots } from 'react-loading-icons'
+import placeHolder from '../assets/placeHolder.json'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
-  const [completedTodos, setCompletedTodos] = useState([])
+  const [completedTodos, setCompletedTodos] = useState([2])
   const [isLoading, setIsLoading] = useState(false)
+  const [isTemp, setIsTemp] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [todoID, setTodoID] = useState('')
 
@@ -37,6 +39,13 @@ const TodoList = () => {
       setIsLoading(false)
     }
   }
+
+  useEffect(() => {
+    setIsTemp(true)
+    setTimeout(() => {
+      setIsTemp(false)
+    }, 500)
+  }, [])
 
   useEffect(() => {
     getTodos()
@@ -137,24 +146,50 @@ const TodoList = () => {
           </p>
         </div>
       }
+
+      {(isTemp && (
+        <div className='--flex-center --my'>
+          <ThreeDots
+            fill='var(--light-blue)'
+            fillOpacity={1}
+            height="2em"
+            speed={1}
+            stroke="transparent"
+            strokeOpacity={1}
+            style={{
+              margin: '2em'
+            }}
+          />
+          <p><strong>Loading...</strong></p>
+        </div>
+      ))}
+
       {
-        isLoading && (
-          <div className='--flex-center --my'>
-            <ThreeDots
-              fill='var(--light-blue)'
-              fillOpacity={1}
-              height="2em"
-              speed={1}
-              stroke="transparent"
-              strokeOpacity={1}
-              style={{
-                margin: '2em'
-              }}
-            />
-            <p><strong>Loading...</strong></p>
+        !isTemp && isLoading &&
+        (<>
+
+          <div className='--flex-between --pb'>
+            <p>
+              <b>Total: &nbsp; </b>{placeHolder.length}
+            </p>
+            <p>
+              <b>Done: &nbsp;</b>2&emsp;
+            </p>
           </div>
 
-        )
+          {placeHolder.map((todo, index) => {
+            return (
+              <Todo
+                key={todo._id}
+                todo={todo}
+                getTodo={getTodo}
+                deleteTodo={deleteTodo}
+                index={index}
+                setToCompleted={setToCompleted}
+              />
+            )
+          })}
+        </>)
       }
       {
         !isLoading && todos.length === 0

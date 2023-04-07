@@ -525,8 +525,8 @@ a:hover {
   pointer-events: none;
 }
 
-.todo-form input:valid ~ span,
-.todo-form input:focus ~ span {
+.todo-form input:valid~span,
+.todo-form input:focus~span {
   font-size: 1.2rem;
   background: #fff;
   transform: translateY(-1.8rem);
@@ -556,7 +556,7 @@ a:hover {
   background: #eee;
   padding: 10px;
   margin: 7px 0;
-  animation: slide-in ease 0.5s;
+  /* animation: slide-in ease 0.5s; */
 }
 
 @keyframes slide-in {
