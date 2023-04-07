@@ -176,7 +176,7 @@ const TodoList = () => {
               <b>Total: &nbsp; </b>{placeHolder.length}
             </p>
             <p>
-              <b>Done: &nbsp;</b>{completedTodos.length}&emsp;
+              <b>Done: &nbsp;</b>2&emsp;
             </p>
           </div>
 
