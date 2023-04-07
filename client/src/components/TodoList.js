@@ -145,7 +145,7 @@ const TodoList = () => {
             <b>Total: &nbsp; </b>{todos.length}
           </p>
           <p>
-            <b>Done: &nbsp;</b>{completedTodos.length || (isLoading * 2)}&emsp;
+            <b>Done: &nbsp;</b>{completedTodos.length}&emsp;
           </p>
         </div>
       }
@@ -173,7 +173,7 @@ const TodoList = () => {
 
           <div className='--flex-between --pb'>
             <p>
-              <b>Total: &nbsp; </b>{placeHolder.length}
+              <b>Total: &nbsp; </b>4
             </p>
             <p>
               <b>Done: &nbsp;</b>2&emsp;
