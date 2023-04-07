@@ -8,7 +8,7 @@ import placeHolder from '../assets/placeHolder.json'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
-  const [completedTodos, setCompletedTodos] = useState([2])
+  const [completedTodos, setCompletedTodos] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isTemp, setIsTemp] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -176,7 +176,7 @@ const TodoList = () => {
               <b>Total: &nbsp; </b>{placeHolder.length}
             </p>
             <p>
-              <b>Done: &nbsp;</b>2&emsp;
+              <b>Done: &nbsp;</b>{completedTodos.length}&emsp;
             </p>
           </div>
 
