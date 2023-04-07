@@ -30,12 +30,15 @@ const TodoList = () => {
   // get all todos
   const getTodos = async () => {
     setIsLoading(true)
+    setIsTemp(true)
     try {
       const { data } = await axios.get(`${URL}/api/todos`)
       setTodos(data)
       setIsLoading(false)
+      setIsTemp(false)
     } catch (error) {
       toast.error(error.message, { position: 'top-center', transition: Flip })
+      setIsTemp(false)
       setIsLoading(false)
     }
   }
