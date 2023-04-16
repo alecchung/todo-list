@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import { Schema, model } from 'mongoose'
 
-const todoSchema = mongoose.Schema({
+const todoSchema = Schema({
     todo: {
         type: String,
         required: [true, "Please add a todo: "],
@@ -11,10 +11,10 @@ const todoSchema = mongoose.Schema({
         default: false,
     }
 },
-{
-    timestamps: true,
-})
+    {
+        timestamps: true,
+    })
 
-const Todo = mongoose.model('Todo', todoSchema)
+const Todo = model('Todo', todoSchema)
 
-module.exports = Todo
+export default Todo
