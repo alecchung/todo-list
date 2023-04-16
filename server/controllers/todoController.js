@@ -1,4 +1,4 @@
-import { create, find, findById, findByIdAndUpdate, findByIdAndDelete } from "../models/todoModel";
+const Todo = require("../models/todoModel");
 
 // create a todo
 const createTodo = async (req, res) => {
