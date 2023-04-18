@@ -2,12 +2,11 @@ import { MdDone, MdDelete, MdEdit } from 'react-icons/md'
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 
-const Todo = ({ todo, index, getTodo,
-  setToCompleted, deleteTodo }) => {
+const Todo = ({ todo, index, getTodo, setToCompleted, deleteTodo }) => {
   return (
     <div className={todo.completed ? 'todo completed' : 'todo'}>
       <p>
-        <b>&nbsp; {index + 1}. &nbsp; </b>{todo.todo}
+        <b>&nbsp; {index + 1}. &nbsp; </b>{todo.title}
       </p>
       <div className='todo-icons'>
 
@@ -15,7 +14,7 @@ const Todo = ({ todo, index, getTodo,
         <MdDone
           data-tooltip-id="my-tooltip"
           data-tooltip-content={todo.completed ? 'Already done' : 'Mark as Done'}
-          onClick={todo.completed ? null : () => setToCompleted(todo)}
+          onClick={todo.completed ? null : () => setToCompleted(todo._id)}
           color={todo.completed ? 'lightgray' : 'green'}
         />
         <Tooltip id="my-tooltip" />

@@ -1,4 +1,4 @@
-const TodoForm = ({ todo, createTodo, handleInputChange,
+const TodoForm = ({ title, createTodo, handleInputChange,
   isEditing, updateTodo }) => {
   return (
     <form className="todo-form"
@@ -6,8 +6,8 @@ const TodoForm = ({ todo, createTodo, handleInputChange,
       <input
         type='text'
         required
-        name='todo'
-        value={todo}
+        name='title'
+        value={title}
         onChange={handleInputChange}
       />
       <span>{isEditing ? '' : 'Add a Todo'}</span>
