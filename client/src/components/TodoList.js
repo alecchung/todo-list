@@ -23,8 +23,7 @@ const TodoList = () => {
 
   // get all todos
   const getTodos = async () => {
-    const query = '*[_type == "todo"]'
-
+    const query = '*[_type == "todo"] | order(_createdAt)'
     client
       .fetch(query)
       .then((data) => {
@@ -33,6 +32,7 @@ const TodoList = () => {
       .catch((error) => {
         toast.error(error.message, { autoClose: 1500, position: 'top-center', transition: Flip })
       })
+
   }
 
   useEffect(() => {
@@ -46,20 +46,21 @@ const TodoList = () => {
   // create a todo
   const createTodo = (e) => {
     e.preventDefault()
-
     const doc = {
       _type: 'todo',
       title: formData.title,
       completed: false,
     }
+    toast.success("Todo added.", { autoClose: 1500, position: 'top-center', transition: Flip })
     client
       .create(doc)
       .then(() => {
-        toast.success("Todo added.", { autoClose: 1500, position: 'top-center', transition: Flip })
-        setFormData({ ...formData, title: '' })
         getTodos()
+        setFormData({ ...formData, title: '' })
       })
-      .catch(err => console.log(err))
+      .catch((error) => {
+        toast.error(error.response.data, { autoClose: 1500, position: 'top-center', transition: Flip })
+      })
   }
 
   // get a single todo
@@ -71,17 +72,16 @@ const TodoList = () => {
 
   // update a single todo
   const updateTodo = async (e) => {
-    // const query = '*[_type == "todo" && _id == id]'
     e.preventDefault()
+    toast.success("Todo updated.", { autoClose: 1500, position: 'top-center', transition: Flip })
     client
       .patch(todoID)
       .set(formData)
       .commit()
       .then(() => {
+        getTodos()
         setFormData({ ...formData, title: '' })
         setIsEditing(false)
-        toast.success("Todo updated.", { autoClose: 1500, position: 'top-center', transition: Flip })
-        getTodos()
       })
       .catch((error) => {
         toast.error(error.response.data, { autoClose: 1500, position: 'top-center', transition: Flip })
@@ -90,24 +90,24 @@ const TodoList = () => {
 
   // set a todo to 'completed'
   const setToCompleted = (id) => {
+    toast.success("Todo completed.", { autoClose: 1500, position: 'top-center', transition: Flip })
     client
       .patch(id)
       .set({ completed: true })
       .commit()
       .then(() => {
-        toast.success("Todo completed.", { autoClose: 1500, position: 'top-center', transition: Flip })
-        setFormData({ ...formData, title: '' })
         getTodos()
+        setFormData({ ...formData, title: '' })
       })
       .catch(error => toast.error(error.message, { autoClose: 1500, position: 'top-center', transition: Flip }))
   }
 
   // delete todo
   const deleteTodo = async (id) => {
+    toast.success("Todo deleted.", { autoClose: 1500, position: 'top-center', transition: Flip })
     client
       .delete(id)
       .then(() => {
-        toast.success("Todo deleted.", { autoClose: 1500, position: 'top-center', transition: Flip })
         getTodos()
       })
       .catch(error => { toast.error(error.message, { autoClose: 1500, position: 'top-center', transition: Flip }) })
