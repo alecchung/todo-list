@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { toast, Flip } from 'react-toastify'
-import { ThreeDots } from 'react-loading-icons'
 import { client } from '../client'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
+import loadingSvg from '../assets/three-dots.svg'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
@@ -40,7 +40,7 @@ const TodoList = () => {
     getTodos()
     setTimeout(() => {
       setIsLoading(false)
-    }, 1000);
+    }, 1500);
   }, [])
 
   // create a todo
@@ -134,19 +134,14 @@ const TodoList = () => {
 
 
       {(isLoading && (
-        <div className='--flex-center --my'>
-          <ThreeDots
-            fill='var(--light-blue)'
-            fillOpacity={1}
-            height="2em"
-            speed={1}
-            stroke="transparent"
-            strokeOpacity={1}
-            style={{
-              margin: '2em'
-            }}
+        <div className='--flex-center'>
+          <img
+            className='--m'
+            src={loadingSvg}
+            alt='loading'
+            width={100}
           />
-          <p><strong>Loading...</strong></p>
+          <p className='--m'><strong>Loading ...</strong></p>
         </div>
       ))}
       {todos.length > 0 &&
