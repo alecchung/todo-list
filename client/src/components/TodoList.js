@@ -139,7 +139,7 @@ const TodoList = () => {
             className='--m'
             src={loadingSvg}
             alt='loading'
-            width={100}
+            width={80}
           />
           <p className='--m'><strong>Loading ...</strong></p>
         </div>
