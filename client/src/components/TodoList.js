@@ -131,16 +131,7 @@ const TodoList = () => {
         isEditing={isEditing}
         updateTodo={updateTodo}
       />
-      {todos.length > 0 &&
-        <div className='--flex-between --pb'>
-          <p>
-            <b>Total: &nbsp; </b>{todos.length}
-          </p>
-          <p>
-            <b>Done: &nbsp;</b>{completedTodos.length}&emsp;
-          </p>
-        </div>
-      }
+
 
       {(isLoading && (
         <div className='--flex-center --my'>
@@ -158,7 +149,16 @@ const TodoList = () => {
           <p><strong>Loading...</strong></p>
         </div>
       ))}
-
+      {todos.length > 0 &&
+        <div className='--flex-between --pb'>
+          <p>
+            <b>Total: &nbsp; </b>{todos.length}
+          </p>
+          <p>
+            <b>Done: &nbsp;</b>{completedTodos.length}&emsp;
+          </p>
+        </div>
+      }
       {
         !isLoading && todos.length === 0
           ? (<p
