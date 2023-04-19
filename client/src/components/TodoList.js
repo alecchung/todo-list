@@ -13,7 +13,7 @@ const TodoList = () => {
   const [todoID, setTodoID] = useState('')
   const [formData, setFormData] = useState({
     title: '',
-    completed: false
+    completed: false,
   })
 
   const handleInputChange = (e) => {
@@ -40,7 +40,7 @@ const TodoList = () => {
     getTodos()
     setTimeout(() => {
       setIsLoading(false)
-    }, 2500);
+    }, 2000);
   }, [])
 
   // create a todo
@@ -132,7 +132,6 @@ const TodoList = () => {
         updateTodo={updateTodo}
       />
 
-
       {(isLoading && (
         <div className='--flex-center'>
           <img
@@ -144,7 +143,8 @@ const TodoList = () => {
           <p className='--m'><strong>Loading ...</strong></p>
         </div>
       ))}
-      {todos.length > 0 &&
+
+      {todos.length > 0 && (
         <div className='--flex-between --pb'>
           <p>
             <b>Total: &nbsp; </b>{todos.length}
@@ -153,24 +153,26 @@ const TodoList = () => {
             <b>Done: &nbsp;</b>{completedTodos.length}&emsp;
           </p>
         </div>
-      }
-      {
-        (!isLoading && todos.length === 0)
-          ? (<p
-            className='--py --lh2 --center-all'>
+      )}
+
+      {(!isLoading && todos.length === 0)
+        ? (
+          <p className='--py --lh2 --center-all'>
             You don't have any todos yet.<br /><br />Care to add one first?
-          </p>)
-          : (<>
-            {todos.map((todo, index) =>
-              <Todo
-                key={todo._id}
-                todo={todo}
-                getTodo={getTodo}
-                deleteTodo={deleteTodo}
-                index={index}
-                setToCompleted={setToCompleted}
-              />
-            )}</>)
+          </p>
+        )
+        : (<>
+          {todos.map((todo, index) =>
+            <Todo
+              key={todo._id}
+              todo={todo}
+              getTodo={getTodo}
+              deleteTodo={deleteTodo}
+              index={index}
+              setToCompleted={setToCompleted}
+            />
+          )}
+        </>)
       }
     </div>
   )
