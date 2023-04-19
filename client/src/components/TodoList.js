@@ -40,7 +40,7 @@ const TodoList = () => {
     getTodos()
     setTimeout(() => {
       setIsLoading(false)
-    }, 1500);
+    }, 2500);
   }, [])
 
   // create a todo
@@ -155,7 +155,7 @@ const TodoList = () => {
         </div>
       }
       {
-        !isLoading && todos.length === 0
+        (!isLoading && todos.length === 0)
           ? (<p
             className='--py --lh2 --center-all'>
             You don't have any todos yet.<br /><br />Care to add one first?
