@@ -158,7 +158,8 @@ const TodoList = () => {
       {(!isLoading && todos.length === 0)
         ? (
           <p className='--py --lh2 --center-all'>
-            You don't have any todos yet.<br /><br />Care to add one first?
+            You don't have any todos yet.<br />
+            Care to add one first?
           </p>
         )
         : (<>
