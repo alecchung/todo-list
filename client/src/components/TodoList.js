@@ -23,11 +23,16 @@ const TodoList = () => {
 
   // get all todos
   const getTodos = async () => {
+    setIsLoading(true)
     const query = '*[_type == "todo"] | order(_createdAt)'
+
     client
       .fetch(query)
       .then((data) => {
-        setTodos(data)
+        setTimeout(() => {
+          setTodos(data)
+          setIsLoading(false)
+        }, 0);
       })
       .catch((error) => {
         toast.error(error.message, { autoClose: 1500, position: 'top-center', transition: Flip })
@@ -36,11 +41,7 @@ const TodoList = () => {
   }
 
   useEffect(() => {
-    setIsLoading(true)
     getTodos()
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000);
   }, [])
 
   // create a todo
