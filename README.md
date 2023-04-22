@@ -1,6 +1,4 @@
-# My Creative Project
-
-## Todo List
+# Todo List
 
 - A simple MERN application: MongoDB + Express + ReactJS + Node.
 
