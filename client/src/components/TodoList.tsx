@@ -1,9 +1,14 @@
-import { useEffect, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 import { toast, Flip } from 'react-toastify'
 import { client } from '../client'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
 import loadingSvg from '../assets/three-dots.svg'
+
+interface FormData {
+  title: string;
+  completed: boolean;
+}
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
@@ -11,12 +16,12 @@ const TodoList = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [todoID, setTodoID] = useState('')
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     title: '',
     completed: false,
   })
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
@@ -45,7 +50,7 @@ const TodoList = () => {
   }, [])
 
   // create a todo
-  const createTodo = (e) => {
+  const createTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const doc = {
       _type: 'todo',
@@ -65,14 +70,14 @@ const TodoList = () => {
   }
 
   // get a single todo
-  const getTodo = async (todo) => {
+  const getTodo = async (todo: { title: any; _id: SetStateAction<string> }) => {
     setFormData({ title: todo.title, completed: false })
     setTodoID(todo._id)
     setIsEditing(true)
   }
 
   // update a single todo
-  const updateTodo = async (e) => {
+  const updateTodo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     toast.success("Todo updated.", { autoClose: 1500, position: 'top-center', transition: Flip })
     client
@@ -90,7 +95,7 @@ const TodoList = () => {
   }
 
   // set a todo to 'completed'
-  const setToCompleted = (id) => {
+  const setToCompleted = (id: string) => {
     toast.success("Todo completed.", { autoClose: 1500, position: 'top-center', transition: Flip })
     client
       .patch(id)
@@ -104,7 +109,7 @@ const TodoList = () => {
   }
 
   // delete todo
-  const deleteTodo = async (id) => {
+  const deleteTodo = async (id: string) => {
     toast.success("Todo deleted.", { autoClose: 1500, position: 'top-center', transition: Flip })
     client
       .delete(id)
@@ -116,7 +121,7 @@ const TodoList = () => {
 
   useEffect(() => {
     const completedTodo = todos.filter((todo) => {
-      return todo.completed === true
+      return todo['completed'] === true
     })
     setCompletedTodos(completedTodo)
   }, [todos])
@@ -166,7 +171,7 @@ const TodoList = () => {
         : (<>
           {todos.map((todo, index) =>
             <Todo
-              key={todo._id}
+              key={todo['_id']}
               todo={todo}
               getTodo={getTodo}
               deleteTodo={deleteTodo}
